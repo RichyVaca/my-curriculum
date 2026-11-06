@@ -1,0 +1,658 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: the inline script in index.html resolves the
+   preference before paint, and useTheme keeps it in sync. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* --------------------------------------------------------------------------
+   Design tokens
+   Light: warm neutral canvas, deep ink, indigo primary, amber secondary.
+   Dark: deep blue-black canvas with lighter brand/accent tones for contrast.
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --canvas: #f7f6f2;
+  --surface: #ffffff;
+  --surface-2: #f1efe9;
+  --ink: #10141d;
+  --muted: #596170;
+  --line: #e3e0d8;
+
+  --brand: #4f46e5;
+  --brand-strong: #4338ca;
+  --brand-soft: #eceeff;
+  --brand-ink: #ffffff;
+
+  --accent: #f5c451;
+  --accent-strong: #96620a;
+  --accent-soft: #fdf4de;
+  --accent-ink: #241a03;
+
+  --success: #047857;
+  --success-soft: #ecfdf5;
+  --danger: #be123c;
+  --danger-soft: #fff1f2;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --canvas: #070a11;
+  --surface: #0d121b;
+  --surface-2: #141b27;
+  --ink: #f3f5f8;
+  --muted: #a4adbc;
+  --line: #232b3a;
+
+  --brand: #a5b4fc;
+  --brand-strong: #c7d2fe;
+  --brand-soft: #171c33;
+  --brand-ink: #0a0d16;
+
+  --accent: #f7cf72;
+  --accent-strong: #fbbf24;
+  --accent-soft: #2a2310;
+  --accent-ink: #1b1403;
+
+  --success: #6ee7b7;
+  --success-soft: #0e2a22;
+  --danger: #fda4af;
+  --danger-soft: #2b1117;
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-ink: var(--brand-ink);
+
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-width: 320px;
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--brand);
+    color: var(--brand-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reusable component styles
+   -------------------------------------------------------------------------- */
+@layer components {
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    transform: translateY(-160%);
+    border-radius: 0.75rem;
+    background-color: var(--ink);
+    color: var(--canvas);
+    padding: 0.7rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: transform 180ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(
+      110deg,
+      var(--brand) 0%,
+      color-mix(in oklab, var(--brand) 45%, var(--accent-strong)) 58%,
+      var(--accent-strong) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-grid {
+    background-image: linear-gradient(
+        to right,
+        color-mix(in oklab, var(--line) 65%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--line) 65%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 58px 58px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 72% 64% at 50% 32%,
+      black 18%,
+      transparent 76%
+    );
+    mask-image: radial-gradient(
+      ellipse 72% 64% at 50% 32%,
+      black 18%,
+      transparent 76%
+    );
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 2.8rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.8rem 1.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.1;
+    text-align: center;
+    transition:
+      background-color 200ms ease,
+      border-color 200ms ease,
+      color 200ms ease,
+      transform 200ms ease,
+      box-shadow 200ms ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  .btn-primary {
+    background-color: var(--brand);
+    color: var(--brand-ink);
+    box-shadow: 0 12px 30px -14px
+      color-mix(in oklab, var(--brand) 65%, transparent);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--brand-strong);
+    box-shadow: 0 18px 34px -16px
+      color-mix(in oklab, var(--brand) 70%, transparent);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--line);
+    background-color: var(--surface);
+    color: var(--ink);
+  }
+
+  .btn-secondary:hover {
+    border-color: color-mix(in oklab, var(--brand) 35%, var(--line));
+    color: var(--brand);
+    background-color: var(--surface);
+  }
+
+  .icon-button {
+    display: inline-flex;
+    height: 2.5rem;
+    width: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid var(--line);
+    background-color: color-mix(in oklab, var(--surface) 82%, transparent);
+    color: var(--ink);
+    transition:
+      background-color 200ms ease,
+      border-color 200ms ease,
+      color 200ms ease,
+      transform 200ms ease;
+  }
+
+  .icon-button:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in oklab, var(--brand) 35%, var(--line));
+    background-color: var(--surface);
+    color: var(--brand);
+  }
+
+  .nav-link {
+    position: relative;
+    border-radius: 9999px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition:
+      color 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .nav-link:hover {
+    color: var(--ink);
+    background-color: color-mix(in oklab, var(--surface-2) 75%, transparent);
+  }
+
+  .nav-link[aria-current="location"] {
+    color: var(--brand);
+    background-color: color-mix(in oklab, var(--brand) 9%, transparent);
+  }
+
+  .nav-link[aria-current="location"]::after {
+    content: "";
+    position: absolute;
+    bottom: 0.15rem;
+    left: 50%;
+    height: 0.25rem;
+    width: 0.25rem;
+    transform: translateX(-50%);
+    border-radius: 9999px;
+    background-color: var(--accent-strong);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-radius: 0.85rem;
+    padding: 0.8rem 0.85rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .mobile-nav-link:hover {
+    background-color: var(--surface-2);
+    color: var(--ink);
+  }
+
+  .mobile-nav-link[aria-current="location"] {
+    background-color: var(--brand-soft);
+    color: var(--brand);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid var(--line);
+    background-color: var(--surface);
+    padding: 0.18rem 0.55rem;
+    font-size: 0.62rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+
+  .field-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .field-label span {
+    color: var(--accent-strong);
+  }
+
+  .field-input {
+    width: 100%;
+    min-height: 2.85rem;
+    border: 1px solid var(--line);
+    border-radius: 0.8rem;
+    background-color: color-mix(
+      in oklab,
+      var(--surface-2) 48%,
+      var(--surface)
+    );
+    padding: 0.7rem 0.85rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--ink);
+    transition:
+      border-color 180ms ease,
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .field-input:hover {
+    border-color: color-mix(in oklab, var(--muted) 32%, var(--line));
+  }
+
+  .field-input:focus {
+    outline: none;
+    border-color: var(--brand);
+    background-color: var(--surface);
+    box-shadow: 0 0 0 3px
+      color-mix(in oklab, var(--brand) 16%, transparent);
+  }
+
+  .field-input[aria-invalid="true"] {
+    border-color: var(--danger);
+  }
+
+  .field-input[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 3px
+      color-mix(in oklab, var(--danger) 16%, transparent);
+  }
+
+  .field-input::placeholder {
+    color: color-mix(in oklab, var(--muted) 62%, transparent);
+  }
+
+  .field-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin-top: 0.35rem;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    color: var(--danger);
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background-color: color-mix(in oklab, var(--surface) 70%, transparent);
+    padding: 0.8rem 0.9rem;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  a.contact-link:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in oklab, var(--brand) 30%, var(--line));
+    background-color: var(--surface);
+  }
+
+  .contact-icon {
+    display: flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background-color: var(--brand-soft);
+    color: var(--brand);
+  }
+
+  .contact-label {
+    display: block;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .contact-value {
+    display: block;
+    margin-top: 0.12rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .footer-heading {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .footer-link {
+    font-size: 0.8rem;
+    color: var(--muted);
+    transition: color 160ms ease;
+  }
+
+  .footer-link:hover {
+    color: var(--brand);
+  }
+
+  .footer-contact {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--muted);
+    transition: color 160ms ease;
+  }
+
+  a.footer-contact:hover {
+    color: var(--brand);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu {
+    animation: menu-in 180ms ease-out both;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Motion
+   -------------------------------------------------------------------------- */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .btn:hover,
+  .icon-button:hover,
+  .contact-link:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Print: clean A4 CV, using only the profile + experience content.
+   -------------------------------------------------------------------------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  :root,
+  .dark {
+    color-scheme: light;
+    --canvas: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f6f6f6;
+    --ink: #111827;
+    --muted: #374151;
+    --line: #d4d4d4;
+    --brand: #1f2937;
+    --brand-strong: #111827;
+    --brand-soft: #f3f4f6;
+    --brand-ink: #ffffff;
+    --accent: #92400e;
+    --accent-strong: #92400e;
+    --accent-soft: #fff;
+    --accent-ink: #111827;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111827 !important;
+    font-size: 10.5pt;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .skip-link,
+  .btn,
+  .icon-button {
+    display: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .text-gradient {
+    background: none !important;
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+  }
+
+  .eyebrow {
+    color: #374151 !important;
+  }
+
+  a {
+    color: #111827 !important;
+    text-decoration: none !important;
+  }
+
+  h2 {
+    break-after: avoid;
+  }
+
+  #sobre-mi article,
+  #sobre-mi li,
+  #experiencia article,
+  #experiencia li {
+    break-inside: avoid;
+  }
+
+  /* The only dark-mode utility that remains inside printed content. */
+  .dark [class*="dark:text-emerald-300"] {
+    color: #065f46 !important;
+  }
+
+  .dark [class*="dark:bg-emerald-400"] {
+    background-color: #ecfdf5 !important;
+  }
+}

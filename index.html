@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Richie Morales — ingeniero informático especializado en soporte técnico, desarrollo frontend y automatización para equipos de eCommerce."
+    />
+    <meta name="author" content="Richie Morales" />
+    <meta
+      property="og:title"
+      content="Richie Morales — Soporte técnico, frontend y automatización"
+    />
+    <meta
+      property="og:description"
+      content="Soporte operativo para eCommerce de alto tráfico, interfaces con React y automatización con IA. Hablemos de tu próxima operación."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..600&amp;family=Sora:wght@600..800&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Richie Morales — Soporte técnico, frontend y automatización</title>
+
+    <!-- Resolve the stored/system theme before first paint (no flash). -->
+    <script>
+      (function () {
+        try {
+          var stored = window.localStorage.getItem('richie-theme')
+          var dark = stored
+            ? stored === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+          var root = document.documentElement
+          root.classList.toggle('dark', dark)
+          root.style.colorScheme = dark ? 'dark' : 'light'
+        } catch (error) {
+          // If storage is unavailable, CSS defaults to the light palette.
+        }
+      })()
+    </script>
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
