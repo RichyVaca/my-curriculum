@@ -47,9 +47,6 @@ export function Footer() {
                 <span className="block font-display text-sm font-bold text-ink">
                   {brand.displayName}
                 </span>
-                <span className="block text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-muted">
-                  {brand.role}
-                </span>
               </span>
             </a>
 

@@ -5,7 +5,7 @@ const resume: Resume = {
   title: 'Ing. Informatico',
   photo: '/profile.jpg',
   summary:
-    'Ingeniero Informático con especialidad en Tecnologías y Aplicaciones Multiplataforma. Experiencia en soporte técnico y operativo para plataformas de eCommerce de alto tráfico, como la de Telcel, y en desarrollo de software para el sector notarial. Destaco por la resolución ágil de incidencias, el análisis de logs y errores, y la continuidad operativa de servicios en línea. Desarrollo con JavaScript, React y React Native, y tengo experiencia con sistemas de tickets (Zendesk, FreshDesk) y SAP.',
+    'Ingeniero Informático con especialidad en Tecnologías y Aplicaciones Multiplataforma. Experiencia en soporte técnico y operativo para plataformas de eCommerce de alto tráfico, como la de Telcel, y en desarrollo de software para el sector notarial. Destaco por la resolución ágil de incidencias, el análisis de logs y errores, y la continuidad operativa de servicios en línea. Desarrollo con JavaScript, React y React Native, y automatizo flujos de trabajo con IA. Experiencia con sistemas de tickets (Zendesk, FreshDesk) y SAP.',
   contact: {
     email: 'r.morva0009@outlook.com',
     phone: '312 137 1444',
@@ -21,13 +21,13 @@ const resume: Resume = {
       startDate: 'Oct 2024',
       endDate: 'Actualidad',
       achievements: [
-        'Atiendo incidencias de usuarios mediante Zendesk y FreshDesk, dando seguimiento hasta su resolución o escalamiento oportuno.',
-        'Brindo soporte a usuarios del eCommerce de Telcel, asegurando la continuidad de la operación en línea.',
-        'Superviso el funcionamiento de múltiples servicios de Telcel, detectando y reportando anomalías de forma oportuna.',
-        'Analizo logs en servidores Linux para identificar la causa raíz de errores en el eCommerce.',
-        'Gestiono información de pagos, pedidos y servicios en SAP.',
-        'Analizo inconsistencias detectadas en el front-end de Telcel.com, revisando el código involucrado para apoyar su corrección.',
-        'Diseño y automatizo flujos de trabajo internos con IA, integrando Claude, Zapier, modelos de lenguaje de Google y webhooks para reducir tareas manuales y agilizar la operación del equipo.',
+        'Atender incidencias de usuarios mediante Zendesk y FreshDesk, dando seguimiento hasta su resolución o escalamiento oportuno.',
+        'Brindar soporte a usuarios del eCommerce de Telcel, asegurando la continuidad de la operación en línea.',
+        'Supervisar el funcionamiento de múltiples servicios de Telcel, detectando y reportando anomalías de forma oportuna.',
+        'Analizar logs en servidores Linux para identificar la causa raíz de errores en el eCommerce.',
+        'Gestionar información de pagos, pedidos y servicios en SAP.',
+        'Analizar inconsistencias detectadas en el front-end de Telcel.com, revisando el código involucrado para apoyar su corrección.',
+        'Diseñar y automatizar flujos de trabajo internos con IA, integrando Claude, Zapier, modelos de lenguaje de Google y webhooks para reducir tareas manuales y agilizar la operación del equipo.',
       ],
     },
     {
@@ -38,12 +38,12 @@ const resume: Resume = {
       startDate: 'Jun 2022',
       endDate: 'Oct 2024',
       achievements: [
-        'Desarrollé y mantuve aplicaciones de software para el proceso notarial, desde el análisis de requerimientos hasta su implementación.',
-        'Analicé las necesidades de los clientes y las traduje en funcionalidades concretas, gestionando bibliotecas y APIs.',
-        'Responsable del mantenimiento integral de equipos de cómputo (hardware y software), garantizando su rendimiento óptimo.',
-        'Brindé soporte técnico de primer y segundo nivel, incluyendo diagnóstico, reparación y reemplazo de componentes.',
-        'Instalé, configuré y mantuve redes LAN/WAN, asegurando la conectividad y la seguridad de la infraestructura.',
-        'Realicé formateo, instalación de sistemas operativos y eliminación de malware en equipos de escritorio y portátiles.',
+        'Desarrollar y mantener aplicaciones de software para el proceso notarial, desde el análisis de requerimientos hasta su implementación.',
+        'Analizar las necesidades de los clientes y traducirlas en funcionalidades concretas, gestionando bibliotecas y APIs.',
+        'Dar mantenimiento integral a equipos de cómputo (hardware y software), garantizando su rendimiento óptimo.',
+        'Brindar soporte técnico de primer y segundo nivel, incluyendo diagnóstico, reparación y reemplazo de componentes.',
+        'Instalar, configurar y mantener redes LAN/WAN, asegurando la conectividad y la seguridad de la infraestructura.',
+        'Realizar formateo, instalación de sistemas operativos y eliminación de malware en equipos de escritorio y portátiles.',
       ],
     },
     {
@@ -54,10 +54,10 @@ const resume: Resume = {
       startDate: 'Feb 2022',
       endDate: 'Jun 2022',
       achievements: [
-        'Brindé asistencia remota y presencial a usuarios con problemas en aplicaciones móviles.',
-        'Elaboré documentación técnica para el equipo, agilizando la resolución de incidencias recurrentes.',
-        'Apoyé en medidas de ciberseguridad para proteger aplicaciones móviles y web.',
-        'Generé reportes mediante consultas en MySQL.',
+        'Brindar asistencia remota y presencial a usuarios con problemas en aplicaciones móviles.',
+        'Elaborar documentación técnica para el equipo, agilizando la resolución de incidencias recurrentes.',
+        'Apoyar en medidas de ciberseguridad para proteger aplicaciones móviles y web.',
+        'Generar reportes mediante consultas en MySQL.',
       ],
     },
     {
@@ -68,11 +68,11 @@ const resume: Resume = {
       startDate: 'Jun 2021',
       endDate: 'Ene 2022',
       achievements: [
-        'Planifiqué y organicé proyectos de TI, cuidando el cumplimiento de cronogramas y entregas.',
-        'Gestioné recursos, riesgos y cronogramas hasta la finalización de los proyectos.',
-        'Apliqué metodologías ágiles para dar seguimiento al avance y a los hitos de cada proyecto.',
-        'Diseñé e implementé soluciones de software escalables con JavaScript, ReactJS, ExpressJS y SQL Server.',
-        'Desarrollé y mantuve código limpio y eficiente, optimizando el rendimiento de las aplicaciones internas.'
+        'Planificar y organizar proyectos de TI, cuidando el cumplimiento de cronogramas y entregas.',
+        'Gestionar recursos, riesgos y cronogramas hasta la finalización de los proyectos.',
+        'Aplicar metodologías ágiles para dar seguimiento al avance y a los hitos de cada proyecto.',
+        'Diseñar e implementar soluciones de software escalables con JavaScript, ReactJS, ExpressJS y SQL Server.',
+        'Desarrollar y mantener código limpio y eficiente, optimizando el rendimiento de las aplicaciones internas.'
       ],
     },
   ],

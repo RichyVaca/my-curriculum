@@ -51,11 +51,6 @@ export const metrics: Metric[] = [
     label: 'Herramientas y tecnologías',
     detail: 'Frontend, datos e inteligencia artificial',
   },
-  {
-    value: 2,
-    label: 'Idiomas',
-    detail: 'Español nativo · Inglés B1',
-  },
 ]
 
 /**
