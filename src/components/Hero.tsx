@@ -14,6 +14,8 @@ import {
  * eagerly with responsive sources and explicit dimensions (no layout shift).
  */
 export function Hero() {
+  const base = import.meta.env.BASE_URL
+
   return (
     <section
       id="inicio"
@@ -99,8 +101,8 @@ export function Hero() {
 
           <figure className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-surface p-2 shadow-2xl shadow-ink/20 dark:border-white/10">
             <img
-              src="/profile-portrait-960.jpg"
-              srcSet="/profile-portrait-480.jpg 480w, /profile-portrait-960.jpg 960w"
+              src={`${base}profile-portrait-960.jpg`}
+              srcSet={`${base}profile-portrait-480.jpg 480w, ${base}profile-portrait-960.jpg 960w`}
               sizes="(min-width: 1024px) 480px, (min-width: 640px) 420px, 80vw"
               alt={`Retrato profesional de ${brand.displayName}`}
               width={960}

@@ -40,6 +40,7 @@ const highlights = [
  */
 export function About() {
   const education = resume.education[0]
+  const base = import.meta.env.BASE_URL
 
   return (
     <section
@@ -55,7 +56,7 @@ export function About() {
               className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand/15 via-transparent to-accent/20 blur-xl"
             />
             <img
-              src="/workflow.svg"
+              src={`${base}workflow.svg`}
               alt="Diagrama del flujo de resolución de incidencias: detectar, analizar, resolver y automatizar."
               width={800}
               height={600}
